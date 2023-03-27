@@ -8,6 +8,7 @@ dp = Dispatcher(bot=bot)
 
 
 
+
 #quiz v1
 @dp.message_handler(commands=['quiz'])
 async def quiz1(message: types.Message):
@@ -60,6 +61,22 @@ async def game_1(call: types.CallbackQuery):
     )
 
 
+@dp.message_handler(content_types=['text'])
+async def dice(message: types.Message):
+    if message.text.lower() == 'dice':
+        await bot.send_dice(message.chat.id, emoji='🎲')
+    elif message.text.startswith('pin'):
+        await bot.pin_chat_message(message.chat.id, message.message_id)
+
+    ban_world = ['java', 'slut', 'bitch', 'niga', 'python is bad', 'ban']
+    for i in ban_world:
+        if i in message.text.lower().replace(" ", ""):
+            await message.delete()
+            await bot.send_message(message.chat.id, "Бот удалил сообщение за "
+                                                    "ненормативную лексику!")
+
+    # else:
+    #     await message.answer(message.text)
 
 
 
