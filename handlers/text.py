@@ -27,7 +27,7 @@ async def dice_echo_and_ban_and_pin(message: types.Message):
 # async def echo_message(message: types.Message):
 #     await message.answer(message.text)
 # #приветствие по никнеймуx
-@dp.message_handler(commands=['start'])
+
 async def hello(message: types.Message):
     await bot.send_message(message.chat.id,
                            f'Hello my Master: {message.from_user.full_name}',

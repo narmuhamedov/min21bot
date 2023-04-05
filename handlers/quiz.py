@@ -1,6 +1,7 @@
 from aiogram import types, Dispatcher
 from aiogram.types import ParseMode, InlineKeyboardMarkup, InlineKeyboardButton
 from bot_instanse import dp, bot
+from parser_app import tv_show
 
 
 #quiz v1
@@ -56,9 +57,17 @@ async def game_1(call: types.CallbackQuery):
     )
 
 
+#for parser
+async def parser_manas_film(message: types.Message):
+    data = tv_show.parser()
+    for i in data:
+        await bot.send_message(message.chat.id, i)
+    #await bot.send_message(message.chat.id, data)
+
 def register_quiz_handlers(dp: Dispatcher):
     dp.register_message_handler(quiz1, commands=['quiz'])
     dp.register_message_handler(game_start, commands=['game'])
+    dp.register_message_handler(parser_manas_film, commands=['parser'])
 
 
 def register_quiz_call(dp: Dispatcher):
