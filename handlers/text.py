@@ -11,7 +11,7 @@ async def dice_echo_and_ban_and_pin(message: types.Message):
 
     ban_world = ['java', 'slut', 'bitch', 'niga', 'python is bad']
     for i in ban_world:
-        if i in message.text.lower().replace(" ", ""):
+        if i.replace(" ", '') in message.text.lower().replace(" ", ""):
             await message.delete()
             await bot.send_message(message.chat.id, "Бот удалил сообщение за "
                                                     "ненормативную лексику!")

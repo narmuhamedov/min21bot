@@ -1,10 +1,13 @@
 from aiogram import executor
 from bot_instanse import dp
 from handlers import quiz, text
+from handlers import fsmadmin
 
+fsmadmin.register_handler_fsmadmin(dp)
 quiz.register_quiz_handlers(dp)
 quiz.register_quiz_call(dp)
 text.register_text_handlers(dp)
+
 
 
 
