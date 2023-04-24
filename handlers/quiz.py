@@ -2,7 +2,7 @@ from aiogram import types, Dispatcher
 from aiogram.types import ParseMode, InlineKeyboardMarkup, InlineKeyboardButton
 from bot_instanse import dp, bot
 from parser_app import tv_show
-
+from database  import bot_db
 
 #quiz v1
 async def quiz1(message: types.Message):
@@ -64,10 +64,16 @@ async def parser_manas_film(message: types.Message):
         await bot.send_message(message.chat.id, i)
     #await bot.send_message(message.chat.id, data)
 
+
+#Для вызова просмотра из бд результаты
+async def show_min_command(message: types.Message):
+    await bot_db.sql_command_select(message)
+
 def register_quiz_handlers(dp: Dispatcher):
     dp.register_message_handler(quiz1, commands=['quiz'])
     dp.register_message_handler(game_start, commands=['game'])
     dp.register_message_handler(parser_manas_film, commands=['parser'])
+    dp.register_message_handler(show_min_command, commands=['show_all'])
 
 
 def register_quiz_call(dp: Dispatcher):
