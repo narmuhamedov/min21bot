@@ -2,7 +2,7 @@ from aiogram import types, Dispatcher
 from aiogram.types import ParseMode, InlineKeyboardMarkup, InlineKeyboardButton
 from bot_instanse import dp, bot
 from parser_app import tv_show
-from database  import bot_db
+from database import bot_db
 
 #quiz v1
 async def quiz1(message: types.Message):
